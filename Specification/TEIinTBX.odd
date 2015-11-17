@@ -234,6 +234,7 @@
                 <tag>termNote type="partOfSpeech"</tag> noun; verb; adjective; adverb;
               properNoun</p>
             <p><tag>termNote type="grammaticalGender"</tag>
+
             </p>
             <p>From a TEI perspective and as described in the Dictionary chapter, the TEI guidelines
               also provides the <gi>gramGrp</gi> element to group together various grammatical
@@ -242,8 +243,14 @@
                 <val>grammaticalGender</val> data categories on <gi>termNote</gi>. Semantic
               compliance with ISO 30046 when the <gi>gramGrp</gi> only contains <gi>pos</gi> and
                 <gi>gender</gi> as children.</p>
+            <!-- JB: (ISO 30046 is thus insufficient as it stands to represent lexical data)
+               we should then add all categories which are grammatical but aren't pos or gender :
+                eg; type="grammaticalNumber","grammaticalRegister", "grammaticalVoice","grammaticalPerson"
+                also add categories such as: "tense", "mood", "modality",..etc.
+              -->
             <p><tag>termNote type="termType"</tag> fullForm; acronym; abbreviation; shortForm;
               variant; phrase</p>
+            <!-- JB: why not express this as an attribute @type on the <termEntry> element? -->
             <p> This data category is useful for controlled authoring and controlled
               translationpurposes, to mark whether a term isapproved or not recommended for use.
                 <tag>termNote type="administrativeStatus"</tag> preferred; admitted; notRecommended;
@@ -379,6 +386,7 @@
                 </rng:zeroOrMore>
                 <rng:zeroOrMore>
                   <rng:ref name="tig"/>
+                  <rng:ref name="etym"/>
                 </rng:zeroOrMore>
               </rng:group>
             </content>
@@ -422,6 +430,10 @@
             <desc>...</desc>
             <!-- ????? -->
             <!-- if this is different from tei:term it should have a different name -->
+            <!-- JB: if we are to be putting the equivalent to what goes in <tei:form> within term, 
+              we need to allow multiple occurences to account for form (orth, pron)
+              as well as variants that may be attributed to different sources
+            -->
             <classes>
               <memberOf key="att.global"/>
             </classes>
@@ -597,6 +609,50 @@
                 </rng:choice>
               </rng:zeroOrMore>
             </content>
+          </elementSpec>
+          <!-- added by Jack -->
+          <elementSpec ident="etym" ns="http://www.tei-c.org/ns/1.0" module="dictionaries" mode="change">
+            <classes mode="change">
+              <memberOf mode="add" key="att.typed"/>
+            </classes>
+            <content>
+              <rng:zeroOrMore>
+                <rng:choice>
+                  <rng:text/>
+                  <rng:ref name="etym"/>
+                  <rng:ref name="model.gLike"/>
+                  <rng:ref name="model.phrase"/>
+                  <rng:ref name="model.inter"/>
+                  <rng:ref name="usg"/>
+                  <rng:ref name="lbl"/>
+                  <rng:ref name="def"/>
+                  <rng:ref name="model.morphLike"/>
+                  <rng:ref name="xr"/>
+                  <rng:ref name="model.global"/>
+                  <rng:ref name="model.biblPart"/>
+                </rng:choice>
+              </rng:zeroOrMore>
+            </content>
+            <attList>
+              <attDef ident="change" mode="delete"/>
+              <attDef ident="copyOf" mode="delete"/>
+              <attDef ident="exclude" mode="delete"/>
+              <attDef ident="expand" mode="delete"/>
+              <attDef ident="facs" mode="delete"/>
+              <attDef ident="mergedIn" mode="delete"/>
+              <attDef ident="norm" mode="delete"/>
+              <attDef ident="opt" mode="delete"/>
+              <attDef ident="orig" mode="delete"/>
+              <attDef ident="rend" mode="delete"/>
+              <attDef ident="rendition" mode="delete"/>
+              <attDef ident="sameAs" mode="delete"/>
+              <attDef ident="select" mode="delete"/>
+              <attDef ident="split" mode="delete"/>
+              <attDef ident="style" mode="delete"/>
+              <attDef ident="synch" mode="delete"/> 
+              <attDef ident="type" mode="change" usage="rec"/>                           
+              <attDef ident="value" mode="delete"/>
+            </attList>
           </elementSpec>
           <!-- simplify global attributes -->
           <classSpec ident="att.global.linking" type="atts" mode="change">
