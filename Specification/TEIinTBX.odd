@@ -386,7 +386,9 @@
                 </rng:zeroOrMore>
                 <rng:zeroOrMore>
                   <rng:ref name="tig"/>
-                  <rng:ref name="etym"/>
+                  <rng:optional>
+                    <rng:ref name="etym"/>
+                  </rng:optional>
                 </rng:zeroOrMore>
               </rng:group>
             </content>
@@ -409,7 +411,7 @@
             </classes>
             <content>
               <rng:group>
-                <rng:ref name="term"/>
+                <rng:ref name="term"/><!--JB: may need more than one for disputed forms (unless we allow <orth> and/<pron> -->
                 <rng:zeroOrMore>
                   <rng:ref name="termNote"/>
                 </rng:zeroOrMore>
