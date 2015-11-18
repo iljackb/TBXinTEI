@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../Schemas/TBXinTEI-jb-v01-2.rnc" type="application/relax-ng-compact-syntax"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:tbx="http://www.tbx.org"
+   xmlns:tei="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Examples associated to the TBX specification in ODD</title>
+         </titleStmt>
+         <publicationStmt>
+            <p>...</p>
+         </publicationStmt>
+         <sourceDesc>
+            <p>...</p>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <ab>
+            (model)
+               termEntry <!-- represents an onomasiological entry  -->
+                  <!-- give @type to termEntry (could be: (etymology, dialectal, concept, etc.) -->
+            
+               <!--(1) space for etymological root/etymon -->
+                  langSet<!-- entry for common etymon/etymological root -->
+                     tig
+                        tei:term <!-- for language forms: need to change to allow <orth> and <pron> -->
+                        (grammatical info) <!-- decide on whether to use tei or tbx method -->
+                           (sense)            <!-- specify sense; (opt)define, point to uri;  -->
+                           (usg type="dom")<!-- specify domain; (opt)define, point to uri;  -->
+                     (note?) <!-- place for discussion of possible conflicting description -->
+            
+               <!-- (2) -->
+            
+            
+         </ab>
+      </encodingDesc>
+   </teiHeader>
+  <text>
+      <body>
+         <!-- could have etymons in (tei) entries here to enable pointers -->
+         <tbx:termEntry xmlns="http://www.tbx.org">
+    
+            <descrip type="etymon">
+               <tei:term></tei:term>
+            </descrip>  
+            
+            <langSet>
+               
+               <tig>
+                  <tei:term></tei:term>
+               </tig>
+               
+
+               
+            </langSet>
+            
+            <!-- optional place for discussion as to conflicting assertions -->
+            
+            
+            <langSet>
+               <tig>
+                  <tei:term></tei:term>
+                  <termNote type="geographicalUsage">
+                     <tei:placeName></tei:placeName>
+                  </termNote>               
+               </tig>
+               <!-- for each descendant language/dialect:        
+                  @xml:lang;
+  
+                  forms (orth, pron)
+                     (NEED TO BE ABLE TO DISTINGUISH TRANSCRIPTION TYPE AND ORTHOGRAPHY)
+                  
+                  grammatical info: <tei:gramGrp>
+                     (if different from etymon)
+                     
+                  sense: <tei:sense>
+                     (if different from etymon sense)
+                     
+                  etymology: <tei:etym>
+                     (if unique from cognate forms, or on linguistic level not analysed for other forms)
+               -->
+               <tei:etym>
+                  <tei:cit>
+                     
+                  </tei:cit>
+               </tei:etym>
+            </langSet>
+            <!-- need to define relations between the cognates in each <langSet> -->
+            
+            <!-- if cognates all have same etymological paths, can nclude <tei:etym> section outside the individual <langSet>  -->
+          
+         </tbx:termEntry>
+      </body>
+  </text>
+</TEI>

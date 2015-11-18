@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../Schemas/TBXinTEI.rnc" type="application/relax-ng-compact-syntax"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:tbx="http://www.tbx.org"
+   xmlns:tei="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Examples for Onomasiological Data for Dialects (Concept-Term (i-n)); associated to the TBX specification in ODD</title>
+         </titleStmt>
+         <publicationStmt>
+            <p>...</p>
+         </publicationStmt>
+         <sourceDesc>
+            <p>...</p>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <ab>
+            (model)
+            termEntry <!-- represents an onomasiological entry  -->
+            <!-- give @type to termEntry (could be: (etymology, dialectal, concept, etc.) -->
+            
+            <!--(1) space for etymological root/etymon -->
+            langSet<!-- entry for common etymon/etymological root -->
+            tig
+            tei:term <!-- for language forms: need to change to allow <orth> and <pron> -->
+            (grammatical info) <!-- decide on whether to use tei or tbx method -->
+            (sense)            <!-- specify sense; (opt)define, point to uri;  -->
+            (usg type="dom")<!-- specify domain; (opt)define, point to uri;  -->
+            (note?) <!-- place for discussion of possible conflicting description -->
+            
+            <!-- (2) -->
+            
+            
+         </ab>
+      </encodingDesc>
+   </teiHeader>
+   <text>
+      <!-- 
+         termEntry
+                  CONCEPT (1)
+                  (links, ptrs, etc.)
+                  
+           langSet (0-n)
+                  
+      
+      -->
+      <body>
+         <tbx:termEntry xmlns="http://www.tbx.org"><!-- @xml:id;  -->
+            <descrip type="Concept" target="">
+               
+            </descrip>
+            <descripGrp>
+               
+            </descripGrp>
+            <tei:note></tei:note>
+            
+            <langSet><!-- language/dialect i) @xml:id;  -->
+               <tig>
+                  <tei:term></tei:term>
+                  
+                  <termNote type="geographicalUsage">
+                     <tei:placeName></tei:placeName>
+                  </termNote> 
+                  
+               </tig>
+               <!-- <tei:etym> -->
+            </langSet>
+            
+            <langSet><!-- language/dialect ii) -->
+               <tig>
+                  <tei:term></tei:term>
+                  
+                  <termNote type="geographicalUsage">
+                     <tei:placeName></tei:placeName>
+                  </termNote> 
+               </tig>
+               <!-- <tei:etym> -->
+            </langSet>
+            
+         </tbx:termEntry>
+      </body>
+  </text>
+</TEI>
